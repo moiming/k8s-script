@@ -74,6 +74,9 @@ apiVersion: v1
 data:
   application.yaml: |
     spring:
+      mvc:
+        pathmatch:
+          matching-strategy: ant_path_matcher
       datasource:
         url: jdbc:mysql://moim-db-dev:3306/moiming?useSSL=false&characterEncoding=utf8&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
         username: root
