@@ -74,7 +74,7 @@ spec:
 ---
 apiVersion: v1
 data:
-  application.yaml: |
+  application.yaml: |+
     spring:
       mvc:
         pathmatch:
@@ -86,7 +86,7 @@ data:
         driver-class-name: com.mysql.cj.jdbc.Driver
       jpa:
         hibernate:
-          ddl-auto:
+          ddl-auto: create
         properties:
           hibernate:
             database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
