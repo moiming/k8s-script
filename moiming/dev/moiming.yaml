@@ -75,6 +75,11 @@ spec:
 apiVersion: v1
 data:
   application.yaml: |+
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: "prometheus,health,metrics"
     spring:
       mvc:
         pathmatch:
