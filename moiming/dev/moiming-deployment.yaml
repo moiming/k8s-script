@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moim-app-dev
+  labels:
+    app: moim
+    phase: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moim
+      phase: dev
+  template:
+    metadata:
+      labels:
+        app: moim
+        phase: dev
+    spec:
+      imagePullSecrets:
+        - name: docker-secret
+      containers:
+        - name: moim
+          imagePullPolicy: Always
+          image: 0612sha/moim-arm64:latest
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: moim-cm-dev
+              mountPath: config
+              readOnly: true
+            - name: moiming-dev
+              mountPath: /moiming-dev-/file/
+          args:
+            - -Dspring.config.location=/config/application.yaml
+      volumes:
+        - name: moim-cm-dev
+          configMap:
+            name: moim-app-dev
+            items:
+              - key: application.yaml
+                path: application.yaml
+        - name: moiming-dev
+          persistentVolumeClaim:
+            claimName: moiming-dev

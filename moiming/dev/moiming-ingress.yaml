@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: moim-app-dev
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: moim.k8s-sha.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: moim-app-dev
+                port:
+                  number: 80
