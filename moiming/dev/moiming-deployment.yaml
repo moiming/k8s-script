@@ -30,7 +30,7 @@ spec:
               mountPath: config
               readOnly: true
             - name: moiming-dev
-              mountPath: /moiming-dev-/file/
+              mountPath: /moiming-dev/file/
           args:
             - -Dspring.config.location=/config/application.yaml
       volumes:
