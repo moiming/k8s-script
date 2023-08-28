@@ -22,7 +22,7 @@ spec:
       containers:
         - name: moim
           imagePullPolicy: Always
-          image: 0612sha/moim-arm64:0828
+          image: 0612sha/moim-arm64:latest
           ports:
             - containerPort: 8080
           volumeMounts:
